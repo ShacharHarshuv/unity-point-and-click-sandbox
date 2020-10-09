@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7415e5be9e5a648bba5c5669b30100b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xOffsetOnEnter: -0.476
+  xOffsetOnEnter: 0
   xOffsetOnExit: 0.588
 --- !u!1107 &7229914540970761669
 AnimatorStateMachine:

@@ -29,6 +29,33 @@ TextureImporter:
   - first:
       213: 1112466296042226398
     second: Player_walkLeftToIdle_8
+  - first:
+      213: 8683235728220558950
+    second: Player_walkLeftToIdle_0
+  - first:
+      213: -1444309409006874116
+    second: Player_walkLeftToIdle_1
+  - first:
+      213: -6723443571851384017
+    second: Player_walkLeftToIdle_2
+  - first:
+      213: 8063191350221812742
+    second: Player_walkLeftToIdle_3
+  - first:
+      213: 177638257673309091
+    second: Player_walkLeftToIdle_4
+  - first:
+      213: -7160468133153151761
+    second: Player_walkLeftToIdle_5
+  - first:
+      213: 1840674198233579925
+    second: Player_walkLeftToIdle_6
+  - first:
+      213: -7204068885770002189
+    second: Player_walkLeftToIdle_7
+  - first:
+      213: -932318788970672578
+    second: Player_walkLeftToIdle_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,15 +148,15 @@ TextureImporter:
         y: 161
         width: 193
         height: 161
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab4de787c2b887ce0800000000000000
-      internalID: -1407221860436880198
+      spriteID: 666119993ec018870800000000000000
+      internalID: 8683235728220558950
       vertices: []
       indices: 
       edges: []
@@ -142,15 +169,15 @@ TextureImporter:
         y: 161
         width: 193
         height: 161
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb0c33d55cc947a10800000000000000
-      internalID: 1906320913770725566
+      spriteID: cf1146aae38c4fbe0800000000000000
+      internalID: -1444309409006874116
       vertices: []
       indices: 
       edges: []
@@ -159,19 +186,19 @@ TextureImporter:
       name: Player_walkLeftToIdle_2
       rect:
         serializedVersion: 2
-        x: 387
+        x: 386
         y: 161
         width: 193
         height: 161
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9325c433b67acf630800000000000000
-      internalID: 3962225851043172921
+      spriteID: f2b2a6891b781b2a0800000000000000
+      internalID: -6723443571851384017
       vertices: []
       indices: 
       edges: []
@@ -184,15 +211,15 @@ TextureImporter:
         y: 161
         width: 193
         height: 161
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d51d29d477cb313a0800000000000000
-      internalID: -6695801000381197987
+      spriteID: 60439f9ffc536ef60800000000000000
+      internalID: 8063191350221812742
       vertices: []
       indices: 
       edges: []
@@ -205,15 +232,15 @@ TextureImporter:
         y: 161
         width: 193
         height: 161
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f386260468dfe4690800000000000000
-      internalID: -7615871166789294017
+      spriteID: 3ab032fdd09177200800000000000000
+      internalID: 177638257673309091
       vertices: []
       indices: 
       edges: []
@@ -226,15 +253,15 @@ TextureImporter:
         y: 0
         width: 193
         height: 161
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 086cad416aa92c150800000000000000
-      internalID: 5891441300659160704
+      spriteID: fe4e6e1bb28e0ac90800000000000000
+      internalID: -7160468133153151761
       vertices: []
       indices: 
       edges: []
@@ -243,19 +270,19 @@ TextureImporter:
       name: Player_walkLeftToIdle_6
       rect:
         serializedVersion: 2
-        x: 192
+        x: 193
         y: 0
         width: 193
         height: 161
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8032734fdf1559110800000000000000
-      internalID: 1267009021340492552
+      spriteID: 59180f45e636b8910800000000000000
+      internalID: 1840674198233579925
       vertices: []
       indices: 
       edges: []
@@ -268,15 +295,15 @@ TextureImporter:
         y: 0
         width: 193
         height: 161
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01878995c2c1c8b70800000000000000
-      internalID: 8902521540211931152
+      spriteID: 3f02c366481060c90800000000000000
+      internalID: -7204068885770002189
       vertices: []
       indices: 
       edges: []
@@ -289,15 +316,15 @@ TextureImporter:
         y: 0
         width: 193
         height: 161
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.38, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed20130c336407f00800000000000000
-      internalID: 1112466296042226398
+      spriteID: e3e0bf5400dbf03f0800000000000000
+      internalID: -932318788970672578
       vertices: []
       indices: 
       edges: []
