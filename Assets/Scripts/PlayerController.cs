@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-git remot
+
 public class PlayerController : MonoBehaviour
 {
     public bool IsFlipX => _spriteRenderer.flipX;
