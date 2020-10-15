@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerController : MonoBehaviour
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
+public partial class PlayerController : MonoBehaviour
 {
-    public bool IsFlipX => _spriteRenderer.flipX;
+    [SerializeField] public float targetPrecision = 1f;
+    public int Direction => _spriteRenderer.flipX ? -1 : 1;
 
     private Camera _camera;
     private Animator _animator;
@@ -14,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private float _targetPosition = 0;
 
-    private bool _isWalking
+    private bool IsWalking
     {
         get => _animator.GetBool(AnimationVariable.IsWalking);
         set { _animator.SetBool(AnimationVariable.IsWalking, value); }
@@ -31,30 +34,7 @@ public class PlayerController : MonoBehaviour
         _camera = Camera.main;
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    // TODO: probably delete those
-    private void OnGUI()
-    {
-        if (Debug.isDebugBuild)
-        {
-            Event currentEvent = Event.current;
-            // Get the mouse position from Event.
-            // Note that the y position from Event is inverted.
-            Vector2 mousePos = new Vector2
-            {
-                x = currentEvent.mousePosition.x,
-                y = _camera.pixelHeight - currentEvent.mousePosition.y
-            };
-
-            Vector3 point = _camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _camera.nearClipPlane));
-
-            GUILayout.BeginArea(new Rect(20, 20, 250, 120));
-            GUILayout.Label("Screen pixels: " + _camera.pixelWidth + ":" + _camera.pixelHeight);
-            GUILayout.Label("Mouse position: " + mousePos);
-            GUILayout.Label("World position: " + point.ToString("F3"));
-            GUILayout.EndArea();
-        }
+        _initializeStopOffset();
     }
 
     // Update is called once per frame
@@ -66,12 +46,20 @@ public class PlayerController : MonoBehaviour
             Vector3 point = _camera.ScreenToWorldPoint(Input.mousePosition);
             _targetPosition = point.x;
             _spriteRenderer.flipX = _targetPosition < currentPosition;
-            _isWalking = true; // TODO: add condition of a distance between target an current, as if distance is too small it shouldn't be possible
+            IsWalking = true; // TODO: add condition of a distance between target and current, as if distance is too small it shouldn't be possible
         }
 
-        if (Math.Abs(_targetPosition - currentPosition) < 1) // TODO adjust that number ?
+        if (IsWalking)
         {
-            _isWalking = false;
+            float stopPosition = currentPosition + Direction * GetStopOffset();
+            float distanceToTarget = Math.Abs(_targetPosition - stopPosition);
+            // Debug.Log(offset); // TODO
+            // Debug.Log(distanceToTarget); // TODO
+            if (distanceToTarget < targetPrecision) // TODO adjust that number ?
+            {
+                Debug.Log("distanceToTarget: " + distanceToTarget);
+                IsWalking = false;
+            }
         }
     }
 }
