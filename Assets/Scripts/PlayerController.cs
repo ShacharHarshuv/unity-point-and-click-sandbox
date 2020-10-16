@@ -39,18 +39,12 @@ public partial class PlayerController : MonoBehaviour
         set { _animator.SetBool(AnimationVariable.IsWalking, value); }
     }
 
-    internal static class AnimationVariable
-    {
-        public static readonly int IsWalking = Animator.StringToHash("isWalking");
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         _camera = Camera.main;
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _initializeStopOffset();
     }
 
     // Update is called once per frame
@@ -69,11 +63,8 @@ public partial class PlayerController : MonoBehaviour
         {
             float stopPosition = currentXPosition + Direction * GetStopOffset();
             float distanceToTarget = Math.Abs(_targetPosition - stopPosition);
-            // Debug.Log(offset); // TODO
-            // Debug.Log(distanceToTarget); // TODO
-            if (distanceToTarget < targetPrecision) // TODO adjust that number ?
+            if (distanceToTarget < targetPrecision)
             {
-                Debug.Log("distanceToTarget: " + distanceToTarget);
                 IsWalking = false;
             }
         }
