@@ -6,18 +6,18 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public partial class PlayerController : MonoBehaviour
 {
-    private float _leftStopOffset;
-    private float _rightStopOffset;
+    public float leftStopOffset;
+    public float rightStopOffset;
 
-    private void _initializeStopOffset()
+    private void _initializeStopOffset() // TODO: delete this function if not needed
     {
-        PlayerAnimationState[] behaviors = _animator.GetBehaviours<PlayerAnimationState>();
-        // TODO: This might not be a good practice as it produces a "double source of truth scenario, with the actual "tag"
-        _rightStopOffset = Array.Find(behaviors, behavior => behavior.tag == "WalkRightToIdle").xOffset;
-        _leftStopOffset = Array.Find(behaviors, behavior => behavior.tag == "WalkLeftToIdle").xOffset;
-        
-        Debug.Log(_rightStopOffset);
-        Debug.Log(_leftStopOffset);
+        // PlayerAnimationState[] behaviors = _animator.GetBehaviours<PlayerAnimationState>();
+        // // TODO: This might not be a good practice as it produces a "double source of truth scenario, with the actual "tag"
+        // rightStopOffset = Array.Find(behaviors, behavior => behavior.tag == "WalkRightToIdle").xOffset;
+        // leftStopOffset = Array.Find(behaviors, behavior => behavior.tag == "WalkLeftToIdle").xOffset;
+        //
+        // Debug.Log(rightStopOffset);
+        // Debug.Log(leftStopOffset);
     }
 
     // Start is called before the first frame update
@@ -26,12 +26,12 @@ public partial class PlayerController : MonoBehaviour
         var currentState = _animator.GetCurrentAnimatorStateInfo(0);
         if (currentState.IsTag("WalkRight"))
         {
-            return _rightStopOffset;
+            return rightStopOffset;
         }
 
         if (currentState.IsTag("WalkLeft") || currentState.IsTag("IdleToWalkLeft"))
         {
-            return _leftStopOffset;
+            return leftStopOffset;
         }
 
         return 0;
@@ -39,6 +39,7 @@ public partial class PlayerController : MonoBehaviour
 
     private void OnGUI()
     {
-        // GUI.Label(new Rect(0, 0, 200, 20),  "Stopping offset: " + GetStopOffset());
+        GUI.Label(new Rect(0, 0, 200, 20),  "Stopping offset: " + GetStopOffset());
+        GUI.Label(new Rect(0,20, 200, 20),  "Position: " + Position);
     }
 }
