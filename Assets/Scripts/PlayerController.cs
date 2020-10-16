@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -12,6 +7,7 @@ public partial class PlayerController : MonoBehaviour
 {
     [SerializeField] public float targetPrecision = 1f;
     [SerializeField] public Transform locator;
+    [SerializeField] public float minStepLength; 
     public int Direction => _spriteRenderer.flipX ? -1 : 1;
 
     public Vector3 Position
@@ -27,11 +23,11 @@ public partial class PlayerController : MonoBehaviour
         }
     }
 
-    private Camera _camera;
+    internal float TargetPosition = 0;
+
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
 
-    private float _targetPosition = 0;
 
     private bool IsWalking
     {
@@ -42,7 +38,6 @@ public partial class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _camera = Camera.main;
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -53,26 +48,30 @@ public partial class PlayerController : MonoBehaviour
         var currentXPosition = Position.x;
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 point = _camera.ScreenToWorldPoint(Input.mousePosition);
-            _targetPosition = point.x;
-            _spriteRenderer.flipX = _targetPosition < currentXPosition;
-            IsWalking = true; // TODO: add condition of a distance between target and current, as if distance is too small it shouldn't be possible
+            Vector3 clickedPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Math.Abs(clickedPoint.x - currentXPosition) > minStepLength / 2)
+            {
+                TargetPosition = clickedPoint.x;
+                _spriteRenderer.flipX = TargetPosition < currentXPosition;
+                IsWalking = true;
+            }
         }
 
         if (IsWalking)
         {
-            float stopPosition = currentXPosition + Direction * GetStopOffset();
-            float distanceToTarget = Math.Abs(_targetPosition - stopPosition);
-            if (distanceToTarget < targetPrecision)
+            bool isPassedTarget = TargetPosition * Direction - targetPrecision <= StopPosition * Direction; 
+            if (isPassedTarget)
             {
                 IsWalking = false;
             }
         }
     }
-
-    void OnGui()
-    {
-        GUI.Label(new Rect(10, 10, 150, 100), "Hello World"); // TODO
-        // Thought: it's worth doing a general "GUI debugging" service for stuff like that.
-    }
+    
+    // private void OnGUI()
+    // {
+    //     Debug.Log("OnGUI Stop Position: " + StopPosition);
+    //     GUI.Label(new Rect(0,20, 200, 20),  "Position: " + Position.x);
+    //     GUI.Label(new Rect(0,40, 200, 20),  "Stop position: " + StopPosition);
+    //     GUI.Label(new Rect(0, 80, 200, 20), "target position: " + TargetPosition);
+    // }
 }
