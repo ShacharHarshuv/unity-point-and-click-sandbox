@@ -52,7 +52,14 @@ public partial class PlayerController : MonoBehaviour
             if (Math.Abs(clickedPoint.x - currentXPosition) > minStepLength / 2)
             {
                 TargetPosition = clickedPoint.x;
+                var previousDirection = Direction;
                 _spriteRenderer.flipX = TargetPosition < currentXPosition;
+                // If player regrets direction
+                if (IsWalking && previousDirection != Direction)
+                {
+                    IsWalking = false;
+                    _animator.Play("Base Layer.Idle");
+                }
                 IsWalking = true;
             }
         }
